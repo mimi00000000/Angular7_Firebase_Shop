@@ -4,8 +4,7 @@ import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
- // import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
@@ -41,7 +40,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
+    AngularFirestoreModule,
     AngularFireAuthModule,
     NgbModule,
     RouterModule.forRoot([
@@ -56,8 +55,7 @@ import { LoginComponent } from './login/login.component';
 
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] }
-    ]),
-   AngularFireDatabaseModule
+    ])
   ],
   providers: [
     AuthService,

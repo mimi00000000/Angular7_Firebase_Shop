@@ -1,4 +1,3 @@
-// import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -11,10 +10,16 @@ export class UserService {
   constructor(private db: AngularFirestore) { }
 
   save(user: firebase.User) {
-    this.db.doc('users/' + user.uid).update({
+    this.db.collection('users').add({
         name: user.displayName,
         email: user.email
-    });
+    })
+      .then( () => {
+        console.log('Document successfully written!');
+      })
+      .catch( (error) => {
+        console.error('!!!!!!!!!!!Error writing document: ', error);
+      });
   }
 
 }
