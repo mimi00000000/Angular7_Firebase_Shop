@@ -6,6 +6,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { MyNavbarComponent } from './my-navbar/my-navbar.component';
@@ -38,6 +39,7 @@ import { LoginComponent } from './login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent },
