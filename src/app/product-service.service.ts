@@ -29,4 +29,20 @@ export class ProductServiceService {
     return this.db.doc('products/' + productId).valueChanges();
   }
 
+
+  update(productId, product) {
+     return this.db.doc(`products/${productId}`).set({
+       imageUrl: product.imageUrl,
+       price: product.price,
+       title: product.title,
+       category: product.category
+      }, { merge: true })
+      .then(() => {
+        console.log('Product updated successfully!');
+      })
+      .catch((error) => {
+        console.error('!!!!!!!!!!!Error while updating the product', error);
+      });
+  }
+
 }
