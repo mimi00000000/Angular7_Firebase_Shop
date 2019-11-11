@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { AppUser } from './models/app-user';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
