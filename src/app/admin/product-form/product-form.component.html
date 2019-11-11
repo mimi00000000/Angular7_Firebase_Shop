@@ -1,23 +1,26 @@
-<form>
+<form #f="ngForm" (ngSubmit)="save(f.value)">
 
   <div class="form-group">
     <label for="title">Title</label>
-    <input id="title" type="text" class="form-control">
+    <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+    
+    </div>
   </div>
 
   <div class="form-group">
     <label for="price">Price</label>
     <div class="input-group">
         <span class="input-group-text">$</span>
-        <input id="price" type="number" class="form-control">
+        <input ngModel name="price" id="price" type="number" class="form-control">
     </div>
   </div>
 
   <div class="form-group">
     <label for="category">Category</label>
-    <select id="category" type="text" class="form-control">
+    <select ngModel name="category" id="category" type="text" class="form-control">
         <option value=""></option>
-        <option *ngFor="let c of categories$ | async" [value]="c.$key">
+        <option *ngFor="let c of categories$ | async" [value]="c.key">
           {{ c.name }}
         </option>
     </select>
@@ -25,7 +28,7 @@
 
   <div class="form-group">
     <label for="imageUrl">Image Url</label>
-    <input id="imageUrl" type="text" class="form-control">
+    <input ngModel name="imageUrl" id="imageUrl" type="text" class="form-control">
   </div>
 
   <button class="btn btn-primary">Save</button>

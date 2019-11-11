@@ -1,3 +1,4 @@
+import { ProductServiceService } from './product-service.service';
 import { CategoryService } from './category.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { UserService } from './user.service';
@@ -12,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MyNavbarComponent } from './my-navbar/my-navbar.component';
@@ -42,7 +44,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     ProductFormComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -77,7 +79,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuardService,
     AdminAuthGuardService,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductServiceService
   ],
   bootstrap: [AppComponent]
 })
