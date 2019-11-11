@@ -1,8 +1,9 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductServiceService } from './../../product-service.service';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/take';
+
 
 @Component({
   selector: 'app-product-form',
@@ -11,9 +12,18 @@ import { map } from 'rxjs/operators';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
+  product = {};
 
-  constructor(private router: Router, private categoryService: CategoryService, private productServiceService: ProductServiceService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private categoryService: CategoryService,
+    private productServiceService: ProductServiceService) {
     this.categories$ = categoryService.getCategories();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.productServiceService.get(id).take(1).subscribe(p => this.product = p);
+    }
   }
 
   save(product) {
