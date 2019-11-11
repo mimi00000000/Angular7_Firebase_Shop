@@ -1,4 +1,8 @@
-# MariamMachaallahOnlineShop
+# Online Shop
+
+This is an E-commerce  Angular Application that Uses Firebase for Back End with Authentication, Authorization and CRUD Operations.
+
+ [Firebase deploy](https://mariam-machaallah-online-shop.firebaseapp.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
