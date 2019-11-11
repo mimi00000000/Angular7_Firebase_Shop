@@ -18,4 +18,11 @@ export class ProductServiceService {
       });
   }
 
+
+  getAll() {
+    return this.db.collection('products').snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+    });
+  }
+
 }
