@@ -45,4 +45,14 @@ export class ProductServiceService {
       });
   }
 
+  delete(productId) {
+    return this.db.doc(`products/${productId}`).delete()
+      .then(() => {
+        console.log('Product updated successfully!');
+      })
+      .catch((error) => {
+        console.error('!!!!!!!!!!!Error while updating the product', error);
+      });
+  }
+
 }
