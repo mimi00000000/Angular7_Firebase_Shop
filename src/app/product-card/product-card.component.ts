@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../shopping-cart.service';
 import { Product } from 'src/app/models/products';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -12,6 +13,21 @@ export class ProductCardComponent {
   // tslint:disable-next-line:no-input-rename
   @Input('showActions') showActions = true;
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
 
 }
+
+/*
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+*/
