@@ -1,8 +1,8 @@
 # Online Shop
 
-This is an E-commerce  Angular Application that Uses Firebase for Back End with Authentication, Authorization and CRUD Operations.
+This is an E-commerce Angular Application that Uses Firebase for Back End with Authentication, Authorization and CRUD Operations.
 
- [Firebase deploy](https://mariam-machaallah-online-shop.firebaseapp.com/)
+[Firebase deploy](https://mariam-machaallah-online-shop.firebaseapp.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
@@ -29,3 +29,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Create an angular project
+
+ng new ang-front
+cd ang-front
+ng serve --open
