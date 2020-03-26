@@ -26,6 +26,6 @@ export class ProductCardComponent {
   }
 
   getQuantity() {
-    return 1;
+    return 0;
   }
 }
