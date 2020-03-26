@@ -1,4 +1,3 @@
-import { ShoppingCart } from "./models/shopping-cart";
 import { Product } from "src/app/models/products";
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
@@ -23,10 +22,7 @@ export class ShoppingCartService {
 
   async getItems() {
     const cartId = await this.getOrCreateCartId();
-    return this.db
-      .doc("shoppingcarts/" + cartId)
-      .collection("items")
-      .valueChanges();
+    return this.db.collection("shoppingcarts/" + cartId + "/items/").get();
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -47,7 +43,7 @@ export class ShoppingCartService {
         console.log(doc.data().quantity);
       } else {
         doc.ref.set({
-          product: product.key,
+          product: { product },
           quantity: 1
         });
         console.log("Document successfully written!");
@@ -64,13 +60,26 @@ export class ShoppingCartService {
         console.log(doc.data().quantity);
       } else {
         doc.ref.set({
-          product: product.key,
+          product: { product },
           quantity: 0
         });
         console.log("Document successfully written!");
       }
     });
     console.log(product.key + " " + cartId);
+  }
+
+  async clearCart() {
+    const cartId = await this.getOrCreateCartId();
+    this.db
+      .doc("/shopping-carts/" + cartId)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch(error => {
+        console.error("Error removing document: ", error);
+      });
   }
 
   private getItem(cartId: string, productId: string) {

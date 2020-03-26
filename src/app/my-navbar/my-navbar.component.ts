@@ -22,7 +22,7 @@ export class MyNavbarComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     cart.subscribe(doc => {
       console.log(doc);
-      this.shoppingCartNumber = doc.length;
+      this.shoppingCartNumber = doc.size;
     });
   }
 

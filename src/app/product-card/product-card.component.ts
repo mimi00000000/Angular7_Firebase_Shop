@@ -1,4 +1,3 @@
-import { ShoppingCart } from "./../models/shopping-cart";
 import { Product } from "src/app/models/products";
 import { ShoppingCartService } from "./../shopping-cart.service";
 import { Component, OnInit, Input } from "@angular/core";
@@ -14,7 +13,7 @@ export class ProductCardComponent {
   // tslint:disable-next-line:no-input-rename
   @Input("showActions") showActions = true;
   // tslint:disable-next-line:no-input-rename
-  @Input("shoppingCart") shoppingCart: ShoppingCart;
+  @Input("shoppingCart") shoppingCart;
 
   constructor(private cartService: ShoppingCartService) {}
 
@@ -26,18 +25,7 @@ export class ProductCardComponent {
     this.cartService.removeFromCart(this.product);
   }
 
-  getQuantity(product) {
+  getQuantity() {
     return 1;
   }
 }
-
-/*
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if true;
-    }
-  }
-}
-*/
